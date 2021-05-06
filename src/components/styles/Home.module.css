@@ -1,10 +1,10 @@
-.home{
-	background:url('../../assets/netflix.jpg');
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
+.home {
+  background: url("../../assets/netflix.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.header{
-	background-color: rgba( 0, 0, 0, 0.35 );
+.header {
+  background-color: rgba(0, 0, 0, 0.35);
 }

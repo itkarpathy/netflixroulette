@@ -1,11 +1,10 @@
-.movies{
-display: flex;
-justify-content: center;
-flex-wrap: wrap;
-text-align: center;
-
+.movies {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
 }
 
-.wrapper{
-margin: 1.2rem ;
+.wrapper {
+  margin: 1.2rem;
 }

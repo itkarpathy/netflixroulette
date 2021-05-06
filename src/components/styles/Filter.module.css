@@ -9,12 +9,23 @@
 }
 
 .filter__left > p {
-  margin-left: 10px;
+  letter-spacing: 2px;
+  margin-right: 5px;
+  position: relative;
+  top: 0;
+  right: 0;
+  cursor: pointer;
 }
 
-.filter__left > p:hover {
-  border-bottom: 2px solid var(--red);
-  cursor: pointer;
+.filter__left > p::after {
+  position: absolute;
+  top: 30px;
+  left: 0px;
+  content: "";
+  height: 2px;
+  width: 100%;
+  margin: 0 auto;
+  background: var(--red);
 }
 
 .filter__left {
@@ -50,13 +61,13 @@
 }
 
 .custom__select::after {
-content: "\25bc";
-color: var(--red);
-font-size: 14px;
-position: absolute;
-top: 0px;
-right: 0;
-line-height: 32px;
+  content: "\25bc";
+  color: var(--red);
+  font-size: 14px;
+  position: absolute;
+  top: 0px;
+  right: 0;
+  line-height: 32px;
 }
 
 .hr {
@@ -65,23 +76,21 @@ line-height: 32px;
   margin: auto;
 }
 
-
-.movie__numbers{
-	text-align: left;
-	padding: 1rem;
-	width: 75%;
-	margin: auto;
-
+.movie__numbers {
+  text-align: left;
+  padding: 1rem;
+  width: 75%;
+  margin: auto;
 }
 
-.movie__numbers > h1 > span{
-	font-weight: 600;
-	margin-right: 10px;
-	font-size: 22px;
+.movie__numbers > h1 > span {
+  font-weight: 600;
+  margin-right: 10px;
+  font-size: 22px;
 }
 
 @media screen and (max-width: 768px) {
-  .filter{
+  .filter {
     flex-direction: column;
   }
 }

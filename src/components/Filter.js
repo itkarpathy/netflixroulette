@@ -1,15 +1,16 @@
 import classes from "./styles/Filter.module.css";
 
-const Filter = ({movies}) => {
+const Filter = ({ movies }) => {
+  const { type, id, releaseDate } = movies;
+
   return (
     <>
       <div className={classes.filter}>
         <div className={classes.filter__left}>
           <p>ALL</p>
-          <p>DOCUMENTARY</p>
           <p>COMEDY</p>
-          <p>HORROR</p>
-          <p>CRIME</p>
+          <p>ACTION</p>
+          <p>DRAMA</p>
         </div>
         <div className={classes.filter__right}>
           <h2>SORT BY</h2>
@@ -20,19 +21,26 @@ const Filter = ({movies}) => {
               className={classes.select}
               placeholder="select"
             >
+              <option>release date</option>
               <option active value="select">
-                RELEASE DATE
+                2016
               </option>
-              <option value="2004">2004</option>
-              <option value="2005">2005</option>
-              <option value="2006">2006</option>
+              <option active value="select">
+                2017
+              </option>
+              <option active value="select">
+                2018
+              </option>
+              <option active value="select">
+                2019
+              </option>
             </select>
           </div>
         </div>
       </div>
       <hr className={classes.hr} />
       <div className={classes.movie__numbers}>
-	<h1><span>{movies.length}</span> movie found</h1>
+        <h1><span>{movies.length}</span> movie found</h1>
       </div>
     </>
   );

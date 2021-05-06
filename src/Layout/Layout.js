@@ -1,11 +1,7 @@
-import classes from '../Layout/Layout.module.css'
+import classes from "../Layout/Layout.module.css";
 
 const Layout = (props) => {
-	return (
-		<div className={classes.main}>
-			{props.children}
-		</div>
-	)
-}
+  return <div className={classes.main}>{props.children}</div>;
+};
 
-export default Layout
+export default Layout;

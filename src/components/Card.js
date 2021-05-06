@@ -1,29 +1,25 @@
 import classes from "./styles/Card.module.css"
 import { Link } from 'react-router-dom'
-import dot  from '../assets/menu.png'
-
 
 const Card = ({ item }) => {
-	const { char_id, img, name, birthday } = item
-	const birthdayCheck = birthday.substr(birthday.length - 4);
-	const filteredBirthday = birthdayCheck > 0 ? birthdayCheck : 'n/a'
 
+	const { id, name, poster, releaseDate, type } = item
 
 	return (
-		<li className={classes.card} key={char_id}>
-			<Link to={`/movie/${char_id}`} className={classes.btn__view}>
+		<li className={classes.card} key={id}>
+			<Link to={`/movie/${id}`} className={classes.btn__view}>
 				<div className={classes.info}>
 				</div>
 				<div>
-					<img src={img} alt='no' />
+					<img src={poster} alt='poster' />
 				</div>
 				<div className={classes.card__box}>
 					<div className={classes.card__title}>
 						<p><span>{name}</span></p>
-						<h3>{filteredBirthday ? (filteredBirthday) : birthday}</h3>
+						<h2>{releaseDate}</h2>
 					</div>
 					<div className={classes.card__release}>
-						<p>Drama, Blography, Music</p>
+						<p>{type}</p>
 					</div>
 				</div>
 			</Link>
