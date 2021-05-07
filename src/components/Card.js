@@ -5,9 +5,10 @@ const Card = ({ item }) => {
 
 	const { id, name, poster, releaseDate, type } = item
 
+	console.log(name, poster)
 	return (
 		<li className={classes.card} key={id}>
-			<Link to={`/movie/${id}`} className={classes.btn__view}>
+			<div to={`/movie/${name}`} className={classes.btn__view}>
 				<div className={classes.info}>
 				</div>
 				<div>
@@ -21,8 +22,9 @@ const Card = ({ item }) => {
 					<div className={classes.card__release}>
 						<p>{type}</p>
 					</div>
+					<Link to={`/movie/${id}`}>view details</Link>
 				</div>
-			</Link>
+			</div>
 		</li>
 	)
 }

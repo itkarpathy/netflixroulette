@@ -5,14 +5,16 @@ import Modal from "./Modal";
 
 const MainNavigation = (props) => {
   const [checkVisible, setVisible] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
 
   const clickModal = () => {
     setVisible(true);
   };
 
+  const inactiveHandler = () =>{
+    setVisible(false)
+  }
+
   const submitOrderHandler = (userData) => {
-    setSubmitting(true);
     fetch(
       "https://netflix-roulette-a0a46-default-rtdb.europe-west1.firebasedatabase.app/movies.json",
       {
@@ -37,7 +39,7 @@ const MainNavigation = (props) => {
       <button className={classes.btn__navbar} onClick={clickModal}>
         + add movie
       </button>
-      {checkVisible && <Modal onConfirm={submitOrderHandler} />}
+      {checkVisible && <Modal onCancel={inactiveHandler}  onConfirm={submitOrderHandler} />}
     </div>
   );
 };

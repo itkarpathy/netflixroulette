@@ -1,13 +1,18 @@
 import classes from "./styles//MovieList.module.css";
 import Card from "./Card";
+import { Link } from 'react-router-dom'
 
 const MovieLists = ({ movies }) => {
+
   return (
     <div className={classes.movies}>
       {movies?.map((item) => {
-        return (
+           return (
           <ul className={classes.wrapper}>
-            <Card item={item} />
+           
+            <li>
+             <Card item={item}/>
+            </li>
           </ul>
         );
       })}

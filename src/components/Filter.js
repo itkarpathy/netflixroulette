@@ -1,7 +1,6 @@
 import classes from "./styles/Filter.module.css";
 
 const Filter = ({ movies }) => {
-  const { type, id, releaseDate } = movies;
 
   return (
     <>

@@ -1,22 +1,26 @@
 import "./App.css";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect} from "react-router-dom";
 import Layout from "./Layout/Layout";
 import Home from "./components/Home";
 import NotFound from "./components/NotFound";
 import MovieDetails from "./components/MovieDetails";
 
 function App() {
+
   return (
     <div className="App">
       <Layout>
         <Switch>
-          <Route path="/" exact>
+          <Route path='/' exact>
+            <Redirect to='/movie'/>
+          </Route>
+          <Route path="/movie" exact>
             <Home />
           </Route>
-          <Route path="/movie/:movieId" exact>
+          <Route path={`/movie/:movieId`}>
             <MovieDetails />
           </Route>
-          <Route path="*" exact>
+          <Route path="*">
             <NotFound />
           </Route>
         </Switch>

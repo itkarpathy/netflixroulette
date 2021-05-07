@@ -15,6 +15,7 @@
   top: 0;
   right: 0;
   cursor: pointer;
+  color: aliceblue;
 }
 
 .filter__left > p::after {
@@ -26,6 +27,7 @@
   width: 100%;
   margin: 0 auto;
   background: var(--red);
+  opacity: 0;
 }
 
 .filter__left {
@@ -36,6 +38,7 @@
 
 .filter__right {
   display: flex;
+  align-items: center;
 }
 
 .filter__right > h2 {

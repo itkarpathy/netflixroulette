@@ -6,7 +6,7 @@ import MainNavigation from "./MainNavigation";
 import Filter from "./Filter";
 import Footer from "./Footer";
 
-const Home = (props) => {
+const Home = () => {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
@@ -25,8 +25,9 @@ const Home = (props) => {
       }
 
       const loadedMovie = [];
-
+   
       for (const key in data) {
+  
         loadedMovie.push({
           id: key,
           name: data[key].name,
@@ -35,6 +36,8 @@ const Home = (props) => {
           type: data[key].type,
         });
       }
+    
+
       setMovies(loadedMovie);
       setIsLoading(false);
     };
@@ -42,21 +45,38 @@ const Home = (props) => {
       setIsLoading(false);
       setHttpError(error.message);
     });
-  }, [query]);
+  }, []);
 
   if (isLoading) return <h1>Loading...</h1>;
   if (httpError) return <h1>{httpError}</h1>;
+
+  // find searchbar query fit with movies name or id
+
+  const movieListCheck = movies.filter(el=> el.id === query)
+  const finderMovie = movieListCheck.map(item => item.name)
+
+  console.log('movie list check', movieListCheck)
+
+  //check if searchbar is empty default value otherwise new value items shows under the list
+
+  const matchEmpty = value => value.trim() === '';
+
+  const validMatch = !matchEmpty(query)
+
 
   return (
     <div>
       <div className={classes.home}>
         <div className={classes.header}>
           <MainNavigation />
+         
           <SearchBar getQuery={(q) => setQuery(q)} />
         </div>
       </div>
       <Filter movies={movies} />
+      {validMatch ? <h1>Found movie {finderMovie}</h1> : (
       <MovieLists movies={movies} />
+      )}
       <Footer />
     </div>
   );

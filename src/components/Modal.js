@@ -87,7 +87,7 @@ const Modal = (props) => {
 
       <div className={classes.control}>
         <button type="submit">Send</button>
-        <button onCancel={props.onCancel}>cancel</button>
+        <button onClick={props.onCancel}>cancel</button>
       </div>
     </form>
   );
