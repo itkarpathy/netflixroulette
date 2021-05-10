@@ -8,3 +8,15 @@
 .header {
   background-color: rgba(0, 0, 0, 0.35);
 }
+
+.searchResult{
+  width: 400px;
+  margin: auto;
+}
+
+.searchResult img{
+width: 200px;
+height: 300px;
+}
+
+

@@ -3,7 +3,9 @@ import { useEffect, useState } from "react";
 import classes from "./styles/MovieDetails.module.css";
 
 const MovieDetails = (props) => {
-  // const [item, setItem] = useState([]);
+  const [item, setItem] = useState([]);
+
+  console.log('details: ' ,item)
 
   const DUMMY_DATA = [
     {
@@ -48,8 +50,10 @@ const MovieDetails = (props) => {
 
   const details = DUMMY_DATA.find((detail) => detail.id === params.movieId);
 
-  console.log(details);
+  
   const { name, poster, time, date, rate} = details;
+
+  
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -58,10 +62,12 @@ const MovieDetails = (props) => {
       );
       const data = await res.json();
 
-      // setItem(data);
+      setItem(data);
     };
     fetchDetails();
   }, []);
+
+  
 
   return (
     <div className={classes.details}>
@@ -74,6 +80,7 @@ const MovieDetails = (props) => {
 
         <h3>🔍</h3>
       </div>
+
       <div className={classes.wrapper}>
         <div className={classes.img}>
           <img src={poster} />

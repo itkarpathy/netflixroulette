@@ -8,3 +8,16 @@
 .wrapper {
   margin: 1.2rem;
 }
+
+.movienumbers{
+  width: 100%;
+  margin: auto;
+  padding: 2rem;
+}
+
+.movieNumbers h1  span{
+  font-weight: 800;
+  font-size: 26px;
+  color: var(--red);
+  margin-right: 0.8rem
+}

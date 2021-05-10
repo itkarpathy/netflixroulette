@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from 'react-router-dom'
 import classes from "./styles/Home.module.css";
 import MovieLists from "./MovieLists";
 import SearchBar from "./SearchBar";
@@ -25,9 +26,9 @@ const Home = () => {
       }
 
       const loadedMovie = [];
-   
+
       for (const key in data) {
-  
+
         loadedMovie.push({
           id: key,
           name: data[key].name,
@@ -36,7 +37,6 @@ const Home = () => {
           type: data[key].type,
         });
       }
-    
 
       setMovies(loadedMovie);
       setIsLoading(false);
@@ -50,12 +50,24 @@ const Home = () => {
   if (isLoading) return <h1>Loading...</h1>;
   if (httpError) return <h1>{httpError}</h1>;
 
+  // console.log('search query come here: ', query)
+
   // find searchbar query fit with movies name or id
 
-  const movieListCheck = movies.filter(el=> el.id === query)
-  const finderMovie = movieListCheck.map(item => item.name)
+  const movieListCheck = movies.filter(el => el.name.trim().toLowerCase === query)
 
-  console.log('movie list check', movieListCheck)
+
+  const movieFilter = movieListCheck.map(result => {
+    return <div className={classes.searchResult}>
+      <div>
+        <h1>{result.name}</h1>
+        <p>{result.releaseDate}</p>
+        <img src={result.poster} alt='poster' />
+      </div>
+      <Link to={`/movie/${result.id}`}><button>view details</button></Link>
+    </div>
+  })
+
 
   //check if searchbar is empty default value otherwise new value items shows under the list
 
@@ -69,13 +81,12 @@ const Home = () => {
       <div className={classes.home}>
         <div className={classes.header}>
           <MainNavigation />
-         
           <SearchBar getQuery={(q) => setQuery(q)} />
         </div>
       </div>
       <Filter movies={movies} />
-      {validMatch ? <h1>Found movie {finderMovie}</h1> : (
-      <MovieLists movies={movies} />
+      {validMatch && movies ? <h1>{movieFilter}</h1> : (
+        <MovieLists movies={movies} />
       )}
       <Footer />
     </div>

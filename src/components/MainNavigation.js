@@ -23,8 +23,9 @@ const MainNavigation = (props) => {
           name: userData.name,
           poster: userData.poster,
           releaseDate: userData.release,
-          typr: userData.type,
+          type: userData.type,
         }),
+        
       }
     );
   };

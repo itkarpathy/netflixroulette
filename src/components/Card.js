@@ -1,16 +1,21 @@
 import classes from "./styles/Card.module.css"
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
-const Card = ({ item }) => {
+const Card = ({ item , onRemove}) => {
+
+	const removeMovieHandler = (id) =>{
+		onRemove(id)
+	}
+
 
 	const { id, name, poster, releaseDate, type } = item
 
-	console.log(name, poster)
 	return (
 		<li className={classes.card} key={id}>
+			
 			<div to={`/movie/${name}`} className={classes.btn__view}>
-				<div className={classes.info}>
-				</div>
+			<button id='666' onClick={() => removeMovieHandler(item.id)}>delete</button>
 				<div>
 					<img src={poster} alt='poster' />
 				</div>
@@ -20,9 +25,9 @@ const Card = ({ item }) => {
 						<h2>{releaseDate}</h2>
 					</div>
 					<div className={classes.card__release}>
-						<p>{type}</p>
+						<p>{type ? type : 'n/a' }</p>
 					</div>
-					<Link to={`/movie/${id}`}>view details</Link>
+					<Link to={`/movie/${id}`}><button>view details</button></Link>
 				</div>
 			</div>
 		</li>

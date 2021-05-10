@@ -1,9 +1,10 @@
 .btn__search {
-  margin-left: 20px;
   background: var(--red);
   color: var(--white);
   font-size: 17px;
   width: 160px;
+  margin-bottom: 2rem;
+  margin-left: 1rem;
 }
 
 .wrapper > h2 {

@@ -30,7 +30,6 @@ const Modal = (props) => {
     const dateIsValid = isNotFourCharacters(release);
     const typeIsValid = !isEmpty(type);
 
-    console.log("date is valid", dateIsValid);
 
     setFormInputsValidity({
       name: nameIsValid,
