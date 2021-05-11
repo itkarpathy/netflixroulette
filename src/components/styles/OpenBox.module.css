@@ -1,0 +1,30 @@
+.openBox {
+  position: absolute;
+  top: 2%;
+  right: 4%;
+  z-index: 200;
+  background: rgba(31, 31, 31, 0.9);
+  width: 130px;
+  text-align: left;
+}
+
+
+.icon > span{
+  display: flex;
+  justify-content: right;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.menuItem > li{
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+
+}
+
+.menuItem > li:hover{
+background: var(--red);
+width: 100%;
+cursor: pointer;
+transition: 0.3s all ease-in-out;
+}

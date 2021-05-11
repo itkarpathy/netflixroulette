@@ -34,11 +34,14 @@ button {
   cursor: pointer;
 }
 
-p {
-  color: #8b9095;
-}
 
 li {
   margin-right: 20px;
   padding: 10px;
+}
+
+
+.confirm{
+  top: 0;
+  position: absolute;
 }

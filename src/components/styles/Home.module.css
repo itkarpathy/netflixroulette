@@ -9,14 +9,13 @@
   background-color: rgba(0, 0, 0, 0.35);
 }
 
-.searchResult{
-  width: 400px;
-  margin: auto;
+.filterMovieList{
+  display: flex;
+  justify-content: space-evenly;
 }
 
-.searchResult img{
-width: 200px;
-height: 300px;
+.searchTitle{
+  padding: 1rem;
+  font-size: 2rem;
 }
-
 

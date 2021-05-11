@@ -12,10 +12,13 @@ const MovieLists = ({ movies }) => {
   }
 
   return (
-    <div className={classes.movies}>
-      <div className={classes.movieNumbers}>
-        <h1><span>{movie.length}</span> movies found</h1>
+    <>
+   <div className={classes.movieNumbers}>
+        <span>{movie.length}</span>
+        <h1> movies found</h1>
       </div>
+    <div className={classes.movies}>
+       
       {movie?.map((item) => {
         return (
           <>
@@ -28,6 +31,7 @@ const MovieLists = ({ movies }) => {
         );
       })}
     </div>
+    </>
   );
 };
 

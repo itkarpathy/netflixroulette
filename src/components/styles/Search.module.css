@@ -3,8 +3,8 @@
   color: var(--white);
   font-size: 17px;
   width: 160px;
-  margin-bottom: 2rem;
   margin-left: 1rem;
+  margin-bottom: 1rem;
 }
 
 .wrapper > h2 {

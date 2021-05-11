@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 import classes from "./styles/Home.module.css";
 import MovieLists from "./MovieLists";
 import SearchBar from "./SearchBar";
 import MainNavigation from "./MainNavigation";
 import Filter from "./Filter";
 import Footer from "./Footer";
+import Results from "./Results";
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("");
+  const [date, setDate] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [httpError, setHttpError] = useState();
 
@@ -28,7 +30,6 @@ const Home = () => {
       const loadedMovie = [];
 
       for (const key in data) {
-
         loadedMovie.push({
           id: key,
           name: data[key].name,
@@ -50,30 +51,28 @@ const Home = () => {
   if (isLoading) return <h1>Loading...</h1>;
   if (httpError) return <h1>{httpError}</h1>;
 
-  // console.log('search query come here: ', query)
+  // find release date filtered query: continue from here.....
+  const releaseFilterCheck = movies.filter(el=> el.releaseDate === 2019)
+  console.log(releaseFilterCheck)
+
+  const isValidDate = releaseFilterCheck.map(el=> el.releaseDate)
+
 
   // find searchbar query fit with movies name or id
 
-  const movieListCheck = movies.filter(el => el.name.trim().toLowerCase === query)
+  const movieListCheck = movies.filter((el) =>
+    el.name.toLowerCase().includes(query)
+  );
 
-
-  const movieFilter = movieListCheck.map(result => {
-    return <div className={classes.searchResult}>
-      <div>
-        <h1>{result.name}</h1>
-        <p>{result.releaseDate}</p>
-        <img src={result.poster} alt='poster' />
-      </div>
-      <Link to={`/movie/${result.id}`}><button>view details</button></Link>
-    </div>
-  })
-
+  const movieFilter = movieListCheck.map((result) => {
+    return <Results result={result} />;
+  });
 
   //check if searchbar is empty default value otherwise new value items shows under the list
 
-  const matchEmpty = value => value.trim() === '';
+  const matchEmpty = (value) => value.trim() === "";
 
-  const validMatch = !matchEmpty(query)
+  const validMatch = !matchEmpty(query);
 
 
   return (
@@ -81,12 +80,22 @@ const Home = () => {
       <div className={classes.home}>
         <div className={classes.header}>
           <MainNavigation />
+          <p>{date}</p>
           <SearchBar getQuery={(q) => setQuery(q)} />
         </div>
       </div>
-      <Filter movies={movies} />
-      {validMatch && movies ? <h1>{movieFilter}</h1> : (
-        <MovieLists movies={movies} />
+      <Filter movies={movies} getYear={(q) => setDate(q)}/>
+      {validMatch && movies ? (
+        <>
+          <div className={classes.searchTitle}>
+            {movieFilter.length} movie found
+          </div>
+          <div className={classes.filterMovieList}>{movieFilter}</div>
+        </>
+      ) : (
+        <>
+          <MovieLists movies={movies} />
+        </>
       )}
       <Footer />
     </div>
