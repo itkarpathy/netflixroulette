@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import classes from "./styles/Home.module.css";
 import MovieLists from "./MovieLists";
 import SearchBar from "./SearchBar";
@@ -51,12 +50,13 @@ const Home = () => {
   if (isLoading) return <h1>Loading...</h1>;
   if (httpError) return <h1>{httpError}</h1>;
 
+
   // find release date filtered query: continue from here.....
-  const releaseFilterCheck = movies.filter(el=> el.releaseDate === 2019)
-  console.log(releaseFilterCheck)
+  const releaseFilterCheck = movies.filter(
+    (el) => el.releaseDate.toString() === date
+  );
 
-  const isValidDate = releaseFilterCheck.map(el=> el.releaseDate)
-
+  const isValidDate = releaseFilterCheck.map((el) => <Results result={el} />);
 
   // find searchbar query fit with movies name or id
 
@@ -64,8 +64,8 @@ const Home = () => {
     el.name.toLowerCase().includes(query)
   );
 
-  const movieFilter = movieListCheck.map((result) => {
-    return <Results result={result} />;
+  const movieSearch = movieListCheck.map((props) => {
+    return <Results result={props} />;
   });
 
   //check if searchbar is empty default value otherwise new value items shows under the list
@@ -75,28 +75,34 @@ const Home = () => {
   const validMatch = !matchEmpty(query);
 
 
+
   return (
     <div>
       <div className={classes.home}>
         <div className={classes.header}>
           <MainNavigation />
-          <p>{date}</p>
           <SearchBar getQuery={(q) => setQuery(q)} />
         </div>
       </div>
-      <Filter movies={movies} getYear={(q) => setDate(q)}/>
-      {validMatch && movies ? (
+      <Filter movies={movies} getYear={(q) => setDate(q)} />
+      {validMatch && movieSearch && isValidDate && date? (
         <>
           <div className={classes.searchTitle}>
-            {movieFilter.length} movie found
+            {movieSearch.length} movie found
           </div>
-          <div className={classes.filterMovieList}>{movieFilter}</div>
+            <div className={classes.filterMovieList}>{movieSearch}</div>
         </>
       ) : (
         <>
-          <MovieLists movies={movies} />
-        </>
-      )}
+        
+          <MovieLists movies={movies} /> 
+          </>
+          )
+      }
+
+
+      
+
       <Footer />
     </div>
   );

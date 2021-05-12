@@ -2,7 +2,6 @@ import classes from "./styles/Filter.module.css";
 import { useState } from "react";
 
 const Filter = ({ movies, getYear }) => {
-  const [filter, setFilter] = useState(movies);
   const [date, setDate] = useState();
   const [year, setYear] = useState();
   const [typeOfMovie, setTypeOfMovie] = useState();
@@ -27,8 +26,8 @@ const Filter = ({ movies, getYear }) => {
 
   //filtered by years
   const selectedSortDateHandler = (q) => {
-    setYear(q)
-    getYear(year)
+    setYear(q);
+    getYear(year);
   };
 
   return (
@@ -39,7 +38,7 @@ const Filter = ({ movies, getYear }) => {
           <h2>SORT BY</h2>
           <div className={classes.custom__select}>
             <select
-              onChange={(e)=> selectedSortDateHandler(e.target.value)}
+              onChange={(e) => selectedSortDateHandler(e.target.value)}
               name="release"
               className={classes.select}
             >
@@ -55,9 +54,6 @@ const Filter = ({ movies, getYear }) => {
         </div>
       </div>
       <hr className={classes.hr} />
-
-      {year ? <h1>This is the {year} year that you choosed</h1> : ""}
-      {typeOfMovie ? <h1>Type of movie: {typeOfMovie}</h1> : ""}
     </>
   );
 };

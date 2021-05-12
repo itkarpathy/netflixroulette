@@ -1,16 +1,19 @@
 import classes from "./styles/Results.module.css";
 import { Link } from "react-router-dom";
 
-const Results = ({ result }) => {
+const Results = (props) => {
+
+  const { name, releaseDate, poster, id } = props.result
+
   return (
     <div className={classes.wrapper}>
       <div className={classes.searchResult}>
         <div>
-          <h1>{result.name}</h1>
-          <p>{result.releaseDate}</p>
-          <img src={result.poster} alt="poster" />
+          <h1>{name}</h1>
+          <p>{releaseDate}</p>
+          <img src={poster} alt="poster" />
         </div>
-        <Link to={`/movie/${result.id}`}>
+        <Link to={`/movie/${id}`}>
           <button>view details</button>
         </Link>
       </div>

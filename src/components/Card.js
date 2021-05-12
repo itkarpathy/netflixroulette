@@ -23,13 +23,11 @@ const Card = ({ item, onRemove }) => {
     setOpenBox(false);
   };
 
-  const closeDeleteBox =() =>{
-	  console.log('closed')
-	  setConfirmMessage(false);
-  }
+  const closeDeleteBox = () => {
+    setConfirmMessage(false);
+  };
 
   const closeConfirm = () => {
-    console.log("closed button confirm box");
     setConfirmMessage(true);
   };
 
@@ -50,12 +48,12 @@ const Card = ({ item, onRemove }) => {
         )}
         {confirmMessage ? (
           <ConfirmBox
-			id={item.id}
+            id={item.id}
             title="delete movie"
             text="Are you sure , you want to delete this movie?"
             onDelete={removeMovieHandler}
             onConfirm={closeConfirm}
-			onCancel={closeDeleteBox}
+            onCancel={closeDeleteBox}
           />
         ) : (
           ""
