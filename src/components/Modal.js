@@ -55,7 +55,7 @@ const Modal = (props) => {
 
   return (
     <form className={classes.modal} onSubmit={submitHandler}>
-      <h2>add new movie:</h2>
+      <h2>add movie:</h2>
       <div className={classes.control}>
         <label htmlFor="name">name</label>
         {!formInputsValidity.name && <p>Please leave valid name!</p>}
@@ -84,9 +84,9 @@ const Modal = (props) => {
         <input type="text" placeholder="Comedy" ref={typeInputRef} />
       </div>
 
-      <div className={classes.control}>
-        <button type="submit">Send</button>
+      <div className={classes.control__btn}>
         <button onClick={props.onCancel}>cancel</button>
+        <button type="submit">Send</button>
       </div>
     </form>
   );

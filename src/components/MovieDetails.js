@@ -5,42 +5,42 @@ import classes from "./styles/MovieDetails.module.css";
 const MovieDetails = (props) => {
   const [item, setItem] = useState([]);
 
-  console.log('details: ' ,item)
+  console.log("details: ", item);
 
   const DUMMY_DATA = [
     {
       id: "m1",
       name: "Skaters Gonna Hate",
-      time: '120',
-      date: '2019',
-      rate: '6.3',
+      time: "120",
+      date: "2019",
+      rate: "6.3",
       poster:
         "https://mymodernmet.com/wp/wp-content/uploads/2018/01/honest-movie-posters-4.jpg",
     },
     {
       id: "m2",
       name: "Contraband",
-      time: '145',
-      date: '2017',
-      rate: '6.9',
+      time: "145",
+      date: "2017",
+      rate: "6.9",
       poster:
         "http://graphicdesignjunction.com/wp-content/uploads/2011/12/large/contraband-movie-poster.jpg",
     },
     {
       id: "m3",
       name: "Warrior",
-      time: '100',
-      date: '2008',
-      rate: '8.3',
+      time: "100",
+      date: "2018",
+      rate: "8.3",
       poster:
         "http://wearemoviegeeks.com/wp-content/uploads/warrior-poster.jpg",
     },
     {
       id: "m4",
       name: "Skyfall",
-      time: '246',
-      date: '2016',
-      rate: '8.8',
+      time: "246",
+      date: "2016",
+      rate: "8.8",
       poster:
         "https://www.filmofilia.com/wp-content/uploads/2012/09/Skyfall-Movie-Poster.jpg",
     },
@@ -50,10 +50,7 @@ const MovieDetails = (props) => {
 
   const details = DUMMY_DATA.find((detail) => detail.id === params.movieId);
 
-  
-  const { name, poster, time, date, rate} = details;
-
-  
+  const { name, poster, time, date, rate } = details;
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -67,17 +64,12 @@ const MovieDetails = (props) => {
     fetchDetails();
   }, []);
 
-  
-
   return (
     <div className={classes.details}>
       <div className={classes.navbar}>
-        <p>
-          <Link to="/movie">
-            <span>netflix</span>roulette
-          </Link>
-        </p>
-
+      <h1><Link to="/movie">
+         <span>netflix</span>roulette
+        </Link></h1>
         <h3>🔍</h3>
       </div>
 
