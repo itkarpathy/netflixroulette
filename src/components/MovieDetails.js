@@ -86,7 +86,7 @@ const MovieDetails = (props) => {
           </div>
           <h3>Oscar winning Movie</h3>
           <div className={classes.details__minutes}>
-            <h2>{date}</h2> <h2>{time} min</h2>
+            <h2>{date}</h2> <h2><span>{time} min</span></h2>
           </div>
 
           <p className={classes.details__content}>

@@ -2,8 +2,9 @@ import classes from "./styles/Modal.module.css";
 import { useRef, useState } from "react";
 
 const isEmpty = (value) => value.trim() === "";
-const isNotFourCharacters = (value) => value.trim().length === 4;
-const checkUrl = (value) => value.trim() === "https://" || value.trim() === "";
+const isThreeCharacters = (value) => value.length < 4;
+const isDateValid = (value) => value === 4;
+const checkUrl = (value) => value.includes("https://") || value.trim() === "";
 
 const Modal = (props) => {
   const [formInputsValidity, setFormInputsValidity] = useState({
@@ -11,12 +12,16 @@ const Modal = (props) => {
     poster: true,
     release: true,
     type: true,
+    genre: true,
+    runtime: true,
   });
 
   const nameInputRef = useRef();
   const posterInputRef = useRef();
   const releaseInputRef = useRef();
   const typeInputRef = useRef();
+  const selectedGenre = useRef();
+  const runtimeRef = useRef();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -24,22 +29,27 @@ const Modal = (props) => {
     const poster = posterInputRef.current.value;
     const release = releaseInputRef.current.value;
     const type = typeInputRef.current.value;
+    const genre = selectedGenre.current.value;
+    const runtime = runtimeRef.current.value;
 
     const nameIsValid = !isEmpty(name);
     const posterIsValid = !checkUrl(poster);
-    const dateIsValid = isNotFourCharacters(release);
+    const dateIsValid = !isDateValid(release);
     const typeIsValid = !isEmpty(type);
-
+    const typeIsGenre = !isEmpty(genre);
+    const typeIsRuntime = isThreeCharacters(runtime);
 
     setFormInputsValidity({
       name: nameIsValid,
       poster: posterIsValid,
-      dateIsValid: dateIsValid,
+      release: dateIsValid,
       type: typeIsValid,
+      genre: typeIsGenre,
+      runtime: typeIsRuntime,
     });
 
     const formIsValid =
-      nameIsValid && posterIsValid && dateIsValid && typeIsValid;
+      nameIsValid && posterIsValid && dateIsValid && typeIsValid && typeIsGenre && typeIsRuntime;
 
     if (!formIsValid) {
       return;
@@ -50,6 +60,7 @@ const Modal = (props) => {
       poster: poster,
       release: release,
       type: type,
+      genre: genre,
     });
   };
 
@@ -63,30 +74,49 @@ const Modal = (props) => {
       </div>
 
       <div className={classes.control}>
-        <label htmlFor="poster">poster url</label>
-        {!formInputsValidity.poster && <p>Please enter valid url!</p>}
-        <input
-          type="text"
-          placeholder="https://something.com"
-          ref={posterInputRef}
-        />
-      </div>
-
-      <div className={classes.control}>
         <label htmlFor="releaseDate">release date</label>
-        {!formInputsValidity.dateIsValid && <p>Maximum 4 char!</p>}
-        <input type="number" placeholder="2021" ref={releaseInputRef} />
+        {!formInputsValidity.release && <p>Please choose released date!</p>}
+        <input ref={releaseInputRef} type="number" placeholder="select year" />
       </div>
 
       <div className={classes.control}>
-        <label htmlFor="type">type</label>
-        {!formInputsValidity.type && <p>Please add type of movie!</p>}
-        <input type="text" placeholder="Comedy" ref={typeInputRef} />
+        <label htmlFor="poster">movie url</label>
+        {!formInputsValidity.poster && <p>Please enter valid url</p>}
+        <input type="text" placeholder="Movie URL here" ref={posterInputRef} />
+      </div>
+
+      <div className={classes.control}>
+        <label htmlFor="type">genre</label>
+        {!formInputsValidity.genre && <p>Please select genre</p>}
+        <select
+          onChange={(e) => e.target.value}
+          ref={selectedGenre}
+          className={classes.select}
+        >
+          <option value="">select genre</option>
+          <option value="comedy">Comedy</option>
+          <option value="action">Action</option>
+          <option value="drama">Drama</option>
+          <option value="horror">Horror</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div className={classes.control}>
+        <label htmlFor="type">overview</label>
+        {!formInputsValidity.type && <p>Please add overview</p>}
+        <input type="text" placeholder="Overview here" ref={typeInputRef} />
+      </div>
+
+      <div className={`${formInputsValidity.runtime ? classes.control: 'no active'}`}>
+        <label htmlFor="releaseDate">runtime</label>
+        {!formInputsValidity.runtime && <p>Maximum 3 char!</p>}
+        <input type="number" placeholder="Runtime here" ref={runtimeRef} />
       </div>
 
       <div className={classes.control__btn}>
-        <button onClick={props.onCancel}>cancel</button>
-        <button type="submit">Send</button>
+        <button onClick={props.onCancel}>reset</button>
+        <button type="submit">send</button>
       </div>
     </form>
   );

@@ -28,6 +28,7 @@
 margin: 1rem;
 }
 
+
 .notValid {
   border: 1px solid lightcoral;
   background: blue;
@@ -38,12 +39,14 @@ h2 {
   color: var(--white);
   margin: 0.4rem;
   text-transform: uppercase;
+  letter-spacing: 3px;
 }
 
 label {
   margin: 0.4rem;
   text-transform: uppercase;
-  color: var(--white);
+  color: var(--red);
+  font-weight: 700;
 }
 
 input {
@@ -59,4 +62,21 @@ input {
   background: var(--red);
   color: var(--white);
   transition: 0.4s all ease-in-out;
+}
+
+.select{
+text-transform: capitalize;
+padding: 1rem 0.6rem;
+border: 0;
+background: rgba(255, 255, 255, 0.15);
+color: white;
+cursor: pointer;
+font-size: 1.25rem;
+text-align: left;
+}
+
+.select option{
+  cursor: pointer;
+  margin: 10px;
+  background: rgb(0, 0, 0,.9);
 }

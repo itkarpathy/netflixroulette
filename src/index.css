@@ -34,14 +34,33 @@ button {
   cursor: pointer;
 }
 
-
 li {
   margin-right: 20px;
   padding: 10px;
 }
 
-
 .confirm{
   top: 0;
   position: absolute;
+}
+
+.MuiInput-underline::before{
+  opacity: 0!important;
+  appearance: none!;
+}
+
+.MuiInputBase-input{
+  background: rgba(255, 255, 255, 0.15)!important;
+  padding-top: 1rem!important;
+  padding-left: 10px!important;
+  margin-bottom: 1rem!important;
+}
+
+.MuiInput-formControl{
+  color: white!important;
+}
+
+.MuiInputLabel-formControl{
+  color: var(--red)!important;
+  font-weight: 800;
 }

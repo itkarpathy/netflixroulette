@@ -1,9 +1,12 @@
 .footer {
   padding: 2rem;
   background: var(--grey);
-  color: var(--red);
-  font-size: 20px;
   text-align: center;
+}
+
+.footer > h2{
+  font-size: 14px;
+  color: var(--red);
 }
 
 .footer > h2 > span {

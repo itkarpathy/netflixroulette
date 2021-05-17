@@ -45,7 +45,7 @@
   color: var(--lightGrey);
 }
 
-.select {
+.filter > select {
   border: none;
   background: transparent;
   color: var(--white);
@@ -53,6 +53,15 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   cursor: pointer;
+  position: relative;
+}
+
+.filter > select::after{
+  content: 'x';
+  position: absolute;
+  top: 0;
+  right: 10%;
+  color: green;
 }
 
 .custom__select {
