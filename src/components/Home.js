@@ -11,7 +11,7 @@ import FilteredList from "./FilteredList";
 const Home = () => {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("");
-  const [filteredValue, setFilteredValue] = useState("");
+  const [filteredValue, setFilteredValue] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [httpError, setHttpError] = useState();
 
@@ -38,8 +38,10 @@ const Home = () => {
           id: key,
           name: data[key].name,
           poster: data[key].poster,
-          releaseDate: data[key].releaseDate,
+          release: data[key].release,
           type: data[key].type,
+          genre: data[key].genre,
+          runtime: data[key].runtime
         });
       }
 
@@ -56,8 +58,8 @@ const Home = () => {
   if (httpError) return <h1>{httpError}</h1>;
 
   // find release date filtered query: continue from here.....
-  const filteredYear = movies.filter(
-    (el) => el.releaseDate.toString() === filteredValue
+  const filteredYear = movies.filter( 
+    (el) => el.release.toString() === filteredValue
   );
 
   /* FIND SEARCH VALUE BY QUERY */

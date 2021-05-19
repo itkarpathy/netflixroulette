@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 
 const Results = (props) => {
 
-  const { name, releaseDate, poster, id } = props.result
+  const { name, release, poster, id } = props.result
 
   return (
     <div className={classes.wrapper}>
       <div className={classes.searchResult}>
         <div>
           <h1>{name}</h1>
-          <p>{releaseDate}</p>
+          <p>{release}</p>
           <img src={poster} alt="poster" />
         </div>
         <Link to={`/movie/${id}`}>

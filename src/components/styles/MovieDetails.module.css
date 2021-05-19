@@ -38,6 +38,7 @@
 
 .img img {
   height: 600px;
+  max-width: 400px;
   background-size: cover;
 }
 

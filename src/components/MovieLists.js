@@ -1,13 +1,25 @@
 import classes from "./styles//MovieList.module.css";
 import Card from "./Card";
 import { useState } from "react";
+import { useHistory } from 'react-router-dom'
+import FilteredList from "./FilteredList";
 
 const MovieLists = ({ search }) => {
+  const history = useHistory()
   const [movie, setMovies] = useState(search);
 
+
   const deletedHandler = (id) => {
-    const filterId = movie.filter((el) => el.id !== id);
-    setMovies(filterId);
+    // const filterId = search.find((el) => el.id !== id);
+    fetch(
+      `https://netflix-roulette-a0a46-default-rtdb.europe-west1.firebasedatabase.app/movies/${id}.json`,
+      {
+        method: "DELETE",
+      }).then(response => {
+        setMovies(prevItems => prevItems.filter(movie => movie.id !== id))
+      })
+
+
   };
 
   if (search.length === 0) {
@@ -17,8 +29,8 @@ const MovieLists = ({ search }) => {
   return (
     <>
       <div className={classes.movieNumbers}>
-        <span>{search.length}</span>
-        <h1> movies found</h1>
+        <span>{movie.length}</span>
+
       </div>
       <div className={classes.movies}>
         {search?.map((item) => {

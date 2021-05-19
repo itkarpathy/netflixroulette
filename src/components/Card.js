@@ -31,7 +31,8 @@ const Card = ({ item, onRemove }) => {
     setConfirmMessage(true);
   };
 
-  const { id, name, poster, releaseDate, type } = item;
+  const { id, name, poster, release, type, runtime, genre } = item;
+
 
   return (
     <li className={classes.card} key={id}>
@@ -59,7 +60,7 @@ const Card = ({ item, onRemove }) => {
           ""
         )}
 
-        <div>
+        <div className={classes.card}>
           <img src={poster} alt="poster" />
         </div>
         <div className={classes.card__box}>
@@ -67,10 +68,10 @@ const Card = ({ item, onRemove }) => {
             <p>
               <span>{name}</span>
             </p>
-            <h2>{releaseDate}</h2>
+            <h2>{release}</h2>
           </div>
           <div className={classes.card__release}>
-            <p>{type ? type : "n/a"}</p>
+            <p>{genre}</p>
           </div>
           <Link to={`/movie/${id}`}>
             <button>view details</button>

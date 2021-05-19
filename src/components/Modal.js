@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 const isEmpty = (value) => value.trim() === "";
 const isThreeCharacters = (value) => value.length < 4;
 const isDateValid = (value) => value === 4;
-const checkUrl = (value) => value.includes("https://") || value.trim() === "";
+const checkUrl = (value) =>  value.trim() === "";
 
 const Modal = (props) => {
   const [formInputsValidity, setFormInputsValidity] = useState({
@@ -61,6 +61,7 @@ const Modal = (props) => {
       release: release,
       type: type,
       genre: genre,
+      runtime: runtime
     });
   };
 

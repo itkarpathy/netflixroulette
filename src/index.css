@@ -39,28 +39,33 @@ li {
   padding: 10px;
 }
 
-.confirm{
+img {
+  z-index: 1;
+  width: 100%;
+}
+
+.confirm {
   top: 0;
   position: absolute;
 }
 
-.MuiInput-underline::before{
-  opacity: 0!important;
+.MuiInput-underline::before {
+  opacity: 0 !important;
   appearance: none!;
 }
 
-.MuiInputBase-input{
-  background: rgba(255, 255, 255, 0.15)!important;
-  padding-top: 1rem!important;
-  padding-left: 10px!important;
-  margin-bottom: 1rem!important;
+.MuiInputBase-input {
+  background: rgba(255, 255, 255, 0.15) !important;
+  padding-top: 1rem !important;
+  padding-left: 10px !important;
+  margin-bottom: 1rem !important;
 }
 
-.MuiInput-formControl{
-  color: white!important;
+.MuiInput-formControl {
+  color: white !important;
 }
 
-.MuiInputLabel-formControl{
-  color: var(--red)!important;
+.MuiInputLabel-formControl {
+  color: var(--red) !important;
   font-weight: 800;
 }

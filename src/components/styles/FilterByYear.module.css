@@ -1,14 +1,17 @@
 .filter {
   display: flex;
   justify-content: space-around;
-  color: var(--white);
+  color: var(--red);
+  border-radius: 3px;
   font-size: 18px;
   padding: 1rem;
-  width: 100%;
   align-items: center;
+  border: 1px solid;
+  width: 300px;
+  margin: 1rem auto;
 }
 
-.filter__left > p {
+.filter > .select {
   letter-spacing: 2px;
   margin-right: 5px;
   position: relative;
@@ -18,34 +21,7 @@
   color: aliceblue;
 }
 
-.filter__left > p::after {
-  position: absolute;
-  top: 30px;
-  left: 0px;
-  content: "";
-  height: 2px;
-  width: 100%;
-  margin: 0 auto;
-  background: var(--red);
-  opacity: 0;
-}
-
-.filter__left {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row;
-}
-
-.filter__right {
-  display: flex;
-  align-items: center;
-}
-
-.filter__right > h2 {
-  color: var(--lightGrey);
-}
-
-.filter > select {
+.filter > .select {
   border: none;
   background: transparent;
   color: var(--white);
@@ -56,15 +32,15 @@
   position: relative;
 }
 
-.filter > select::after{
-  content: 'x';
+.filter > .select::after {
+  content: "x";
   position: absolute;
   top: 0;
   right: 10%;
   color: green;
 }
 
-.custom__select {
+.select {
   position: relative;
   bottom: 0;
   width: 180px;
@@ -72,7 +48,7 @@
   padding-left: 6px;
 }
 
-.custom__select::after {
+.select::after {
   content: "\25bc";
   color: var(--red);
   font-size: 14px;

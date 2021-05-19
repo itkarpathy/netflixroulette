@@ -1,10 +1,11 @@
 import classes from "./styles/MainNavigation.module.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Modal from "./Modal";
 import Message from "./Message";
 
 const MainNavigation = (props) => {
+  const history = useHistory()
   const [visible, setVisible] = useState(false);
   const [successMessage, setSetSuccessMessage] = useState(false);
 
@@ -29,13 +30,16 @@ const MainNavigation = (props) => {
         body: JSON.stringify({
           name: userData.name,
           poster: userData.poster,
-          releaseDate: userData.release,
+          release: userData.release,
           type: userData.type,
+          genre: userData.genre,
+          runtime: userData.runtime
         }),
 
       }
 
     );
+    history.push('/')
     setSetSuccessMessage(true)
   };
 
